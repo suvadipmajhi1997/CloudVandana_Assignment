@@ -1,0 +1,28 @@
+const readline = require('readline');
+
+const input = readline.createInterface({
+  input: process.stdin
+});
+
+function reverseWords(s) {
+  let words = s.split(' ');
+
+  function reverseWord(word) {
+    let reversed = '';
+    for (let i = word.length - 1; i >= 0; i--) {
+      reversed += word[i];
+    }
+    return reversed;
+  }
+  
+  for (let i = 0; i < words.length; i++) {
+    words[i] = reverseWord(words[i]);
+  }
+  
+  return words.join(' ');
+}
+
+input.question('', (input) => {
+  const reversedString = reverseWords(input);
+  console.log(reversedString);
+});
